@@ -1,0 +1,891 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MPlusModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="8.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="alarm">
+          <Key>
+            <PropertyRef Name="idx" />
+          </Key>
+          <Property Name="idx" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID" Type="varchar" MaxLength="64" />
+          <Property Name="code" Type="int" Nullable="false" />
+          <Property Name="msg" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="level" Type="int" Nullable="false" />
+          <Property Name="eventTime" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="releaseTime" Type="datetime" Precision="0" />
+        </EntityType>
+        <EntityType Name="alarm_define">
+          <Key>
+            <PropertyRef Name="idx" />
+          </Key>
+          <Property Name="idx" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID" Type="varchar" MaxLength="64" />
+          <Property Name="code" Type="int" Nullable="false" />
+          <Property Name="msg" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="level" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="alarm_history">
+          <Key>
+            <PropertyRef Name="idx" />
+          </Key>
+          <Property Name="idx" Type="int" Nullable="false" />
+          <Property Name="ID" Type="varchar" MaxLength="64" />
+          <Property Name="code" Type="int" Nullable="false" />
+          <Property Name="msg" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="level" Type="int" Nullable="false" />
+          <Property Name="eventTime" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="releaseTime" Type="datetime" Precision="0" />
+        </EntityType>
+        <EntityType Name="charge">
+          <Key>
+            <PropertyRef Name="idx" />
+          </Key>
+          <Property Name="idx" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VEHICLEID" Type="varchar" MaxLength="64" />
+          <Property Name="GOALNAME" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="loc_x" Type="int" Nullable="false" />
+          <Property Name="loc_y" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="controller">
+          <Key>
+            <PropertyRef Name="idx" />
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="idx" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="IP" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="port" Type="int" Nullable="false" />
+          <Property Name="_state" Type="int" Nullable="false" />
+          <Property Name="_onlineState" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="cost">
+          <Key>
+            <PropertyRef Name="idx" />
+          </Key>
+          <Property Name="idx" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VEHICLEID" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="GOALNAME" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="_cost" Type="int" />
+        </EntityType>
+        <EntityType Name="distance">
+          <Key>
+            <PropertyRef Name="idx" />
+          </Key>
+          <Property Name="idx" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UNITID_start" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="UNITID_end" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="distance" Type="int" />
+        </EntityType>
+        <EntityType Name="mg_type">
+          <Key>
+            <PropertyRef Name="idx" />
+          </Key>
+          <Property Name="idx" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="MG_NAME" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="MG_MAX" Type="int" />
+          <Property Name="FS_MAX" Type="int" />
+        </EntityType>
+        <EntityType Name="pepschedule">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="EXECUTE_TIME" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MULTIID" Type="varchar" MaxLength="30" />
+          <Property Name="BATCHID" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="S_EQPID" Type="varchar" MaxLength="20" />
+          <Property Name="S_PORT" Type="varchar" MaxLength="200" />
+          <Property Name="S_SLOT" Type="varchar" MaxLength="500" />
+          <Property Name="T_EQPID" Type="varchar" MaxLength="200" />
+          <Property Name="T_PORT" Type="varchar" MaxLength="200" />
+          <Property Name="T_SLOT" Type="varchar" MaxLength="500" />
+          <Property Name="TRAYID" Type="varchar" MaxLength="1000" />
+          <Property Name="WORKTYPE" Type="varchar" MaxLength="10" />
+          <Property Name="TRANSFERTYPE" Type="varchar" MaxLength="100" />
+          <Property Name="_mgtype" Type="varchar" MaxLength="10" />
+          <Property Name="WINDOW_TIME" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EXECUTE_TIME" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="REAL_TIME" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="STATUS" Type="varchar" MaxLength="10" />
+          <Property Name="LOT_NO" Type="varchar" MaxLength="1000" />
+          <Property Name="QTY" Type="varchar" MaxLength="1000" />
+          <Property Name="STEPID" Type="varchar" MaxLength="1000" />
+          <Property Name="S_STEPID" Type="varchar" MaxLength="1000" />
+          <Property Name="T_STEPID" Type="varchar" MaxLength="1000" />
+          <Property Name="URGENCY" Type="varchar" MaxLength="10" />
+          <Property Name="FLOW_STATUS" Type="varchar" MaxLength="10" />
+          <Property Name="_VEHICLEID" Type="varchar" MaxLength="64" />
+          <Property Name="_bufSlot" Type="varchar" MaxLength="1000" />
+          <Property Name="_state" Type="int" />
+          <Property Name="_srcAssignTime" Type="datetime" Precision="0" />
+          <Property Name="_srcArrivingTime" Type="datetime" Precision="0" />
+          <Property Name="_srcStartTime" Type="datetime" Precision="0" />
+          <Property Name="_srcFinishTime" Type="datetime" Precision="0" />
+          <Property Name="_dstAssignTime" Type="datetime" Precision="0" />
+          <Property Name="_dstArrivingTime" Type="datetime" Precision="0" />
+          <Property Name="_dstStartTime" Type="datetime" Precision="0" />
+          <Property Name="_dstFinishTime" Type="datetime" Precision="0" />
+          <Property Name="_isChecked" Type="int" />
+          <Property Name="_priority" Type="int" />
+          <Property Name="DOWNTEMP" Type="int" />
+          <Property Name="EVENT_DATE" Type="datetime" Precision="0" />
+          <Property Name="ORDER" Type="int" />
+        </EntityType>
+        <EntityType Name="pepschedule_history">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="EXECUTE_TIME" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="MULTIID" Type="varchar" MaxLength="30" />
+          <Property Name="BATCHID" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="S_EQPID" Type="varchar" MaxLength="20" />
+          <Property Name="S_PORT" Type="varchar" MaxLength="200" />
+          <Property Name="S_SLOT" Type="varchar" MaxLength="500" />
+          <Property Name="T_EQPID" Type="varchar" MaxLength="200" />
+          <Property Name="T_PORT" Type="varchar" MaxLength="200" />
+          <Property Name="T_SLOT" Type="varchar" MaxLength="500" />
+          <Property Name="TRAYID" Type="varchar" MaxLength="1000" />
+          <Property Name="WORKTYPE" Type="varchar" MaxLength="10" />
+          <Property Name="TRANSFERTYPE" Type="varchar" MaxLength="100" />
+          <Property Name="_mgtype" Type="varchar" MaxLength="10" />
+          <Property Name="WINDOW_TIME" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EXECUTE_TIME" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="REAL_TIME" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="STATUS" Type="varchar" MaxLength="10" />
+          <Property Name="LOT_NO" Type="varchar" MaxLength="1000" />
+          <Property Name="QTY" Type="varchar" MaxLength="1000" />
+          <Property Name="STEPID" Type="varchar" MaxLength="1000" />
+          <Property Name="S_STEPID" Type="varchar" MaxLength="1000" />
+          <Property Name="T_STEPID" Type="varchar" MaxLength="1000" />
+          <Property Name="URGENCY" Type="varchar" MaxLength="10" />
+          <Property Name="FLOW_STATUS" Type="varchar" MaxLength="10" />
+          <Property Name="_VEHICLEID" Type="varchar" MaxLength="64" />
+          <Property Name="_bufSlot" Type="varchar" MaxLength="1000" />
+          <Property Name="_state" Type="int" />
+          <Property Name="_srcAssignTime" Type="datetime" Precision="0" />
+          <Property Name="_srcArrivingTime" Type="datetime" Precision="0" />
+          <Property Name="_srcStartTime" Type="datetime" Precision="0" />
+          <Property Name="_srcFinishTime" Type="datetime" Precision="0" />
+          <Property Name="_dstAssignTime" Type="datetime" Precision="0" />
+          <Property Name="_dstArrivingTime" Type="datetime" Precision="0" />
+          <Property Name="_dstStartTime" Type="datetime" Precision="0" />
+          <Property Name="_dstFinishTime" Type="datetime" Precision="0" />
+          <Property Name="_isChecked" Type="int" />
+          <Property Name="_priority" Type="int" />
+          <Property Name="DOWNTEMP" Type="int" />
+          <Property Name="EVENT_DATE" Type="datetime" Precision="0" />
+          <Property Name="ORDER" Type="int" />
+        </EntityType>
+        <EntityType Name="standby">
+          <Key>
+            <PropertyRef Name="idx" />
+          </Key>
+          <Property Name="idx" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VEHICLEID" Type="varchar" MaxLength="64" />
+          <Property Name="GOALNAME" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="loc_x" Type="int" Nullable="false" />
+          <Property Name="loc_y" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="unit">
+          <Key>
+            <PropertyRef Name="idx" />
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="idx" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="GOALNAME" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="goaltype" Type="int" Nullable="false" />
+          <Property Name="max_col" Type="int" />
+          <Property Name="max_row" Type="int" />
+          <Property Name="lds_dist" Type="int" />
+          <Property Name="rf_id" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="rf_ch" Type="int" Nullable="false" />
+          <Property Name="loc_x" Type="int" />
+          <Property Name="loc_y" Type="int" />
+          <Property Name="direction" Type="varchar" MaxLength="32" />
+          <Property Name="VEHICLEID" Type="varchar" MaxLength="64" />
+        </EntityType>
+        <EntityType Name="unit_fs">
+          <Key>
+            <PropertyRef Name="idx" />
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="idx" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="GOALNAME" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="goaltype" Type="int" Nullable="false" />
+          <Property Name="mctype" Type="int" Nullable="false" />
+          <Property Name="max_col" Type="int" />
+          <Property Name="max_row" Type="int" />
+          <Property Name="lds_dist" Type="int" />
+          <Property Name="rf_id" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="rf_ch" Type="int" Nullable="false" />
+          <Property Name="loc_x" Type="int" />
+          <Property Name="loc_y" Type="int" />
+          <Property Name="direction" Type="varchar" MaxLength="32" />
+          <Property Name="VEHICLEID" Type="varchar" MaxLength="64" />
+        </EntityType>
+        <EntityType Name="vehicle">
+          <Key>
+            <PropertyRef Name="idx" />
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="idx" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="TRANSFERTYPE" Type="varchar" MaxLength="100" />
+          <Property Name="IP" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="port" Type="int" Nullable="false" />
+          <Property Name="remoteIP" Type="varchar" MaxLength="20" />
+          <Property Name="remotePort" Type="int" />
+          <Property Name="installState" Type="int" Nullable="false" />
+          <Property Name="_mode" Type="int" Nullable="false" />
+          <Property Name="_state" Type="int" Nullable="false" />
+          <Property Name="loc_x" Type="int" />
+          <Property Name="loc_y" Type="int" />
+          <Property Name="_loc_th" Type="int" />
+          <Property Name="_chargeRate" Type="float" />
+          <Property Name="_BATCHID" Type="varchar" MaxLength="64" />
+          <Property Name="_lastArrivedUnit" Type="varchar" MaxLength="64" />
+          <Property Name="isAssigned" Type="tinyint" />
+          <Property Name="isUse" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="vehicle_part">
+          <Key>
+            <PropertyRef Name="idx" />
+          </Key>
+          <Property Name="idx" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VEHICLEID" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="portNo" Type="int" Nullable="false" />
+          <Property Name="state" Type="int" Nullable="false" />
+          <Property Name="slotNo" Type="int" />
+          <Property Name="_trayId" Type="varchar" MaxLength="25" />
+        </EntityType>
+        <EntityType Name="zone">
+          <Key>
+            <PropertyRef Name="idx" />
+          </Key>
+          <Property Name="idx" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UNITID" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="VEHICLEID" Type="varchar" MaxLength="64" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="MPlusModelStoreContainer">
+          <EntitySet Name="alarm" EntityType="Self.alarm" Schema="mplus" store:Type="Tables" />
+          <EntitySet Name="alarm_define" EntityType="Self.alarm_define" Schema="mplus" store:Type="Tables" />
+          <EntitySet Name="alarm_history" EntityType="Self.alarm_history" Schema="mplus" store:Type="Tables" />
+          <EntitySet Name="charge" EntityType="Self.charge" Schema="mplus" store:Type="Tables" />
+          <EntitySet Name="controller" EntityType="Self.controller" Schema="mplus" store:Type="Tables" />
+          <EntitySet Name="cost" EntityType="Self.cost" Schema="mplus" store:Type="Tables" />
+          <EntitySet Name="distance" EntityType="Self.distance" Schema="mplus" store:Type="Tables" />
+          <EntitySet Name="mg_type" EntityType="Self.mg_type" Schema="mplus" store:Type="Tables" />
+          <EntitySet Name="pepschedule" EntityType="Self.pepschedule" Schema="mplus" store:Type="Tables" />
+          <EntitySet Name="pepschedule_history" EntityType="Self.pepschedule_history" Schema="mplus" store:Type="Tables" />
+          <EntitySet Name="standby" EntityType="Self.standby" Schema="mplus" store:Type="Tables" />
+          <EntitySet Name="unit" EntityType="Self.unit" Schema="mplus" store:Type="Tables" />
+          <EntitySet Name="unit_fs" EntityType="Self.unit_fs" Schema="mplus" store:Type="Tables" />
+          <EntitySet Name="vehicle" EntityType="Self.vehicle" Schema="mplus" store:Type="Tables" />
+          <EntitySet Name="vehicle_part" EntityType="Self.vehicle_part" Schema="mplus" store:Type="Tables" />
+          <EntitySet Name="zone" EntityType="Self.zone" Schema="mplus" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MPlusModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="alarm">
+          <Key>
+            <PropertyRef Name="idx" />
+          </Key>
+          <Property Name="idx" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="code" Type="Int32" Nullable="false" />
+          <Property Name="msg" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="level" Type="Int32" Nullable="false" />
+          <Property Name="eventTime" Type="DateTime" Nullable="false" />
+          <Property Name="releaseTime" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="alarm_define">
+          <Key>
+            <PropertyRef Name="idx" />
+          </Key>
+          <Property Name="idx" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="code" Type="Int32" Nullable="false" />
+          <Property Name="msg" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="level" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="alarm_history">
+          <Key>
+            <PropertyRef Name="idx" />
+          </Key>
+          <Property Name="idx" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="code" Type="Int32" Nullable="false" />
+          <Property Name="msg" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="level" Type="Int32" Nullable="false" />
+          <Property Name="eventTime" Type="DateTime" Nullable="false" />
+          <Property Name="releaseTime" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="charge">
+          <Key>
+            <PropertyRef Name="idx" />
+          </Key>
+          <Property Name="idx" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VEHICLEID" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="GOALNAME" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="loc_x" Type="Int32" Nullable="false" />
+          <Property Name="loc_y" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="controller">
+          <Key>
+            <PropertyRef Name="idx" />
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="idx" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IP" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="port" Type="Int32" Nullable="false" />
+          <Property Name="C_state" Type="Int32" Nullable="false" />
+          <Property Name="C_onlineState" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="cost">
+          <Key>
+            <PropertyRef Name="idx" />
+          </Key>
+          <Property Name="idx" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VEHICLEID" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GOALNAME" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="C_cost" Type="Int32" />
+        </EntityType>
+        <EntityType Name="distance">
+          <Key>
+            <PropertyRef Name="idx" />
+          </Key>
+          <Property Name="idx" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UNITID_start" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UNITID_end" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="distance1" Type="Int32" />
+        </EntityType>
+        <EntityType Name="pepschedule">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="EXECUTE_TIME" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MULTIID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="BATCHID" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="S_EQPID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="S_PORT" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="S_SLOT" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="T_EQPID" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="T_PORT" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="T_SLOT" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="TRAYID" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="WORKTYPE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="TRANSFERTYPE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="WINDOW_TIME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EXECUTE_TIME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="REAL_TIME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="STATUS" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="LOT_NO" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="QTY" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="STEPID" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="S_STEPID" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="T_STEPID" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="URGENCY" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="FLOW_STATUS" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="C_VEHICLEID" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="C_bufSlot" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="C_state" Type="Int32" />
+          <Property Name="C_srcAssignTime" Type="DateTime" />
+          <Property Name="C_srcArrivingTime" Type="DateTime" />
+          <Property Name="C_srcStartTime" Type="DateTime" />
+          <Property Name="C_srcFinishTime" Type="DateTime" />
+          <Property Name="C_dstAssignTime" Type="DateTime" />
+          <Property Name="C_dstArrivingTime" Type="DateTime" />
+          <Property Name="C_dstStartTime" Type="DateTime" />
+          <Property Name="C_dstFinishTime" Type="DateTime" />
+          <Property Name="C_isChecked" Type="Int32" />
+          <Property Name="C_priority" Type="Int32" />
+          <Property Name="DOWNTEMP" Type="Int32" />
+          <Property Name="EVENT_DATE" Type="DateTime" />
+          <Property Name="ORDER" Type="Int32" />
+          <Property Name="C_mgtype" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="pepschedule_history">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="EXECUTE_TIME" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="MULTIID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="BATCHID" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="S_EQPID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="S_PORT" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="S_SLOT" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="T_EQPID" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="T_PORT" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="T_SLOT" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="TRAYID" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="WORKTYPE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="TRANSFERTYPE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="WINDOW_TIME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EXECUTE_TIME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="REAL_TIME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="STATUS" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="LOT_NO" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="QTY" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="STEPID" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="S_STEPID" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="T_STEPID" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="URGENCY" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="FLOW_STATUS" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="C_VEHICLEID" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="C_bufSlot" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="C_state" Type="Int32" />
+          <Property Name="C_srcAssignTime" Type="DateTime" />
+          <Property Name="C_srcArrivingTime" Type="DateTime" />
+          <Property Name="C_srcStartTime" Type="DateTime" />
+          <Property Name="C_srcFinishTime" Type="DateTime" />
+          <Property Name="C_dstAssignTime" Type="DateTime" />
+          <Property Name="C_dstArrivingTime" Type="DateTime" />
+          <Property Name="C_dstStartTime" Type="DateTime" />
+          <Property Name="C_dstFinishTime" Type="DateTime" />
+          <Property Name="C_isChecked" Type="Int32" />
+          <Property Name="C_priority" Type="Int32" />
+          <Property Name="DOWNTEMP" Type="Int32" />
+          <Property Name="EVENT_DATE" Type="DateTime" />
+          <Property Name="ORDER" Type="Int32" />
+          <Property Name="C_mgtype" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="standby">
+          <Key>
+            <PropertyRef Name="idx" />
+          </Key>
+          <Property Name="idx" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VEHICLEID" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="GOALNAME" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="loc_x" Type="Int32" Nullable="false" />
+          <Property Name="loc_y" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="unit">
+          <Key>
+            <PropertyRef Name="idx" />
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="idx" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GOALNAME" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="goaltype" Type="Int32" Nullable="false" />
+          <Property Name="max_col" Type="Int32" />
+          <Property Name="max_row" Type="Int32" />
+          <Property Name="lds_dist" Type="Int32" />
+          <Property Name="rf_id" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="rf_ch" Type="Int32" Nullable="false" />
+          <Property Name="loc_x" Type="Int32" />
+          <Property Name="loc_y" Type="Int32" />
+          <Property Name="direction" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="VEHICLEID" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="vehicle">
+          <Key>
+            <PropertyRef Name="idx" />
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="idx" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TRANSFERTYPE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IP" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="port" Type="Int32" Nullable="false" />
+          <Property Name="remoteIP" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="remotePort" Type="Int32" />
+          <Property Name="installState" Type="Int32" Nullable="false" />
+          <Property Name="C_mode" Type="Int32" Nullable="false" />
+          <Property Name="C_state" Type="Int32" Nullable="false" />
+          <Property Name="loc_x" Type="Int32" />
+          <Property Name="loc_y" Type="Int32" />
+          <Property Name="C_loc_th" Type="Int32" />
+          <Property Name="C_chargeRate" Type="Single" />
+          <Property Name="C_BATCHID" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="C_lastArrivedUnit" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="isAssigned" Type="SByte" />
+          <Property Name="isUse" Type="SByte" />
+        </EntityType>
+        <EntityType Name="vehicle_part">
+          <Key>
+            <PropertyRef Name="idx" />
+          </Key>
+          <Property Name="idx" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VEHICLEID" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="portNo" Type="Int32" Nullable="false" />
+          <Property Name="state" Type="Int32" Nullable="false" />
+          <Property Name="slotNo" Type="Int32" />
+          <Property Name="C_trayId" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="zone">
+          <Key>
+            <PropertyRef Name="idx" />
+          </Key>
+          <Property Name="idx" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UNITID" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="VEHICLEID" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="MPlusEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="alarm" EntityType="Self.alarm" />
+          <EntitySet Name="alarm_define" EntityType="Self.alarm_define" />
+          <EntitySet Name="alarm_history" EntityType="Self.alarm_history" />
+          <EntitySet Name="charge" EntityType="Self.charge" />
+          <EntitySet Name="controller" EntityType="Self.controller" />
+          <EntitySet Name="cost" EntityType="Self.cost" />
+          <EntitySet Name="distance" EntityType="Self.distance" />
+          <EntitySet Name="pepschedule" EntityType="Self.pepschedule" />
+          <EntitySet Name="pepschedule_history" EntityType="Self.pepschedule_history" />
+          <EntitySet Name="standby" EntityType="Self.standby" />
+          <EntitySet Name="unit" EntityType="Self.unit" />
+          <EntitySet Name="vehicle" EntityType="Self.vehicle" />
+          <EntitySet Name="vehicle_part" EntityType="Self.vehicle_part" />
+          <EntitySet Name="zone" EntityType="Self.zone" />
+          <EntitySet Name="mg_type" EntityType="MPlusModel.mg_type" />
+          <EntitySet Name="unit_fs" EntityType="MPlusModel.unit_fs" />
+        </EntityContainer>
+        <EntityType Name="mg_type">
+          <Key>
+            <PropertyRef Name="idx" />
+          </Key>
+          <Property Name="idx" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="MG_NAME" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="MG_MAX" Type="Int32" />
+          <Property Name="FS_MAX" Type="Int32" />
+        </EntityType>
+        <EntityType Name="unit_fs">
+          <Key>
+            <PropertyRef Name="idx" />
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="idx" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="GOALNAME" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="goaltype" Type="Int32" Nullable="false" />
+          <Property Name="mctype" Type="Int32" Nullable="false" />
+          <Property Name="max_col" Type="Int32" />
+          <Property Name="max_row" Type="Int32" />
+          <Property Name="lds_dist" Type="Int32" />
+          <Property Name="rf_id" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="rf_ch" Type="Int32" Nullable="false" />
+          <Property Name="loc_x" Type="Int32" />
+          <Property Name="loc_y" Type="Int32" />
+          <Property Name="direction" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="VEHICLEID" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MPlusModelStoreContainer" CdmEntityContainer="MPlusEntities">
+          <EntitySetMapping Name="alarm">
+            <EntityTypeMapping TypeName="MPlusModel.alarm">
+              <MappingFragment StoreEntitySet="alarm">
+                <ScalarProperty Name="idx" ColumnName="idx" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="msg" ColumnName="msg" />
+                <ScalarProperty Name="level" ColumnName="level" />
+                <ScalarProperty Name="eventTime" ColumnName="eventTime" />
+                <ScalarProperty Name="releaseTime" ColumnName="releaseTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="alarm_define">
+            <EntityTypeMapping TypeName="MPlusModel.alarm_define">
+              <MappingFragment StoreEntitySet="alarm_define">
+                <ScalarProperty Name="idx" ColumnName="idx" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="msg" ColumnName="msg" />
+                <ScalarProperty Name="level" ColumnName="level" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="alarm_history">
+            <EntityTypeMapping TypeName="MPlusModel.alarm_history">
+              <MappingFragment StoreEntitySet="alarm_history">
+                <ScalarProperty Name="idx" ColumnName="idx" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="msg" ColumnName="msg" />
+                <ScalarProperty Name="level" ColumnName="level" />
+                <ScalarProperty Name="eventTime" ColumnName="eventTime" />
+                <ScalarProperty Name="releaseTime" ColumnName="releaseTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="charge">
+            <EntityTypeMapping TypeName="MPlusModel.charge">
+              <MappingFragment StoreEntitySet="charge">
+                <ScalarProperty Name="idx" ColumnName="idx" />
+                <ScalarProperty Name="VEHICLEID" ColumnName="VEHICLEID" />
+                <ScalarProperty Name="GOALNAME" ColumnName="GOALNAME" />
+                <ScalarProperty Name="loc_x" ColumnName="loc_x" />
+                <ScalarProperty Name="loc_y" ColumnName="loc_y" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="controller">
+            <EntityTypeMapping TypeName="MPlusModel.controller">
+              <MappingFragment StoreEntitySet="controller">
+                <ScalarProperty Name="idx" ColumnName="idx" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="port" ColumnName="port" />
+                <ScalarProperty Name="C_state" ColumnName="_state" />
+                <ScalarProperty Name="C_onlineState" ColumnName="_onlineState" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cost">
+            <EntityTypeMapping TypeName="MPlusModel.cost">
+              <MappingFragment StoreEntitySet="cost">
+                <ScalarProperty Name="idx" ColumnName="idx" />
+                <ScalarProperty Name="VEHICLEID" ColumnName="VEHICLEID" />
+                <ScalarProperty Name="GOALNAME" ColumnName="GOALNAME" />
+                <ScalarProperty Name="C_cost" ColumnName="_cost" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="distance">
+            <EntityTypeMapping TypeName="MPlusModel.distance">
+              <MappingFragment StoreEntitySet="distance">
+                <ScalarProperty Name="idx" ColumnName="idx" />
+                <ScalarProperty Name="UNITID_start" ColumnName="UNITID_start" />
+                <ScalarProperty Name="UNITID_end" ColumnName="UNITID_end" />
+                <ScalarProperty Name="distance1" ColumnName="distance" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pepschedule">
+            <EntityTypeMapping TypeName="MPlusModel.pepschedule">
+              <MappingFragment StoreEntitySet="pepschedule">
+                <ScalarProperty Name="C_mgtype" ColumnName="_mgtype" />
+                <ScalarProperty Name="TRANSFERTYPE" ColumnName="TRANSFERTYPE" />
+                <ScalarProperty Name="REAL_TIME" ColumnName="REAL_TIME" />
+                <ScalarProperty Name="WINDOW_TIME" ColumnName="WINDOW_TIME" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MULTIID" ColumnName="MULTIID" />
+                <ScalarProperty Name="BATCHID" ColumnName="BATCHID" />
+                <ScalarProperty Name="S_EQPID" ColumnName="S_EQPID" />
+                <ScalarProperty Name="S_PORT" ColumnName="S_PORT" />
+                <ScalarProperty Name="S_SLOT" ColumnName="S_SLOT" />
+                <ScalarProperty Name="T_EQPID" ColumnName="T_EQPID" />
+                <ScalarProperty Name="T_PORT" ColumnName="T_PORT" />
+                <ScalarProperty Name="T_SLOT" ColumnName="T_SLOT" />
+                <ScalarProperty Name="TRAYID" ColumnName="TRAYID" />
+                <ScalarProperty Name="WORKTYPE" ColumnName="WORKTYPE" />
+                <ScalarProperty Name="EXECUTE_TIME" ColumnName="EXECUTE_TIME" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="LOT_NO" ColumnName="LOT_NO" />
+                <ScalarProperty Name="QTY" ColumnName="QTY" />
+                <ScalarProperty Name="STEPID" ColumnName="STEPID" />
+                <ScalarProperty Name="S_STEPID" ColumnName="S_STEPID" />
+                <ScalarProperty Name="T_STEPID" ColumnName="T_STEPID" />
+                <ScalarProperty Name="URGENCY" ColumnName="URGENCY" />
+                <ScalarProperty Name="FLOW_STATUS" ColumnName="FLOW_STATUS" />
+                <ScalarProperty Name="C_VEHICLEID" ColumnName="_VEHICLEID" />
+                <ScalarProperty Name="C_bufSlot" ColumnName="_bufSlot" />
+                <ScalarProperty Name="C_state" ColumnName="_state" />
+                <ScalarProperty Name="C_srcAssignTime" ColumnName="_srcAssignTime" />
+                <ScalarProperty Name="C_srcArrivingTime" ColumnName="_srcArrivingTime" />
+                <ScalarProperty Name="C_srcStartTime" ColumnName="_srcStartTime" />
+                <ScalarProperty Name="C_srcFinishTime" ColumnName="_srcFinishTime" />
+                <ScalarProperty Name="C_dstAssignTime" ColumnName="_dstAssignTime" />
+                <ScalarProperty Name="C_dstArrivingTime" ColumnName="_dstArrivingTime" />
+                <ScalarProperty Name="C_dstStartTime" ColumnName="_dstStartTime" />
+                <ScalarProperty Name="C_dstFinishTime" ColumnName="_dstFinishTime" />
+                <ScalarProperty Name="C_isChecked" ColumnName="_isChecked" />
+                <ScalarProperty Name="C_priority" ColumnName="_priority" />
+                <ScalarProperty Name="DOWNTEMP" ColumnName="DOWNTEMP" />
+                <ScalarProperty Name="EVENT_DATE" ColumnName="EVENT_DATE" />
+                <ScalarProperty Name="ORDER" ColumnName="ORDER" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pepschedule_history">
+            <EntityTypeMapping TypeName="MPlusModel.pepschedule_history">
+              <MappingFragment StoreEntitySet="pepschedule_history">
+                <ScalarProperty Name="C_mgtype" ColumnName="_mgtype" />
+                <ScalarProperty Name="TRANSFERTYPE" ColumnName="TRANSFERTYPE" />
+                <ScalarProperty Name="REAL_TIME" ColumnName="REAL_TIME" />
+                <ScalarProperty Name="WINDOW_TIME" ColumnName="WINDOW_TIME" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MULTIID" ColumnName="MULTIID" />
+                <ScalarProperty Name="BATCHID" ColumnName="BATCHID" />
+                <ScalarProperty Name="S_EQPID" ColumnName="S_EQPID" />
+                <ScalarProperty Name="S_PORT" ColumnName="S_PORT" />
+                <ScalarProperty Name="S_SLOT" ColumnName="S_SLOT" />
+                <ScalarProperty Name="T_EQPID" ColumnName="T_EQPID" />
+                <ScalarProperty Name="T_PORT" ColumnName="T_PORT" />
+                <ScalarProperty Name="T_SLOT" ColumnName="T_SLOT" />
+                <ScalarProperty Name="TRAYID" ColumnName="TRAYID" />
+                <ScalarProperty Name="WORKTYPE" ColumnName="WORKTYPE" />
+                <ScalarProperty Name="EXECUTE_TIME" ColumnName="EXECUTE_TIME" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="LOT_NO" ColumnName="LOT_NO" />
+                <ScalarProperty Name="QTY" ColumnName="QTY" />
+                <ScalarProperty Name="STEPID" ColumnName="STEPID" />
+                <ScalarProperty Name="S_STEPID" ColumnName="S_STEPID" />
+                <ScalarProperty Name="T_STEPID" ColumnName="T_STEPID" />
+                <ScalarProperty Name="URGENCY" ColumnName="URGENCY" />
+                <ScalarProperty Name="FLOW_STATUS" ColumnName="FLOW_STATUS" />
+                <ScalarProperty Name="C_VEHICLEID" ColumnName="_VEHICLEID" />
+                <ScalarProperty Name="C_bufSlot" ColumnName="_bufSlot" />
+                <ScalarProperty Name="C_state" ColumnName="_state" />
+                <ScalarProperty Name="C_srcAssignTime" ColumnName="_srcAssignTime" />
+                <ScalarProperty Name="C_srcArrivingTime" ColumnName="_srcArrivingTime" />
+                <ScalarProperty Name="C_srcStartTime" ColumnName="_srcStartTime" />
+                <ScalarProperty Name="C_srcFinishTime" ColumnName="_srcFinishTime" />
+                <ScalarProperty Name="C_dstAssignTime" ColumnName="_dstAssignTime" />
+                <ScalarProperty Name="C_dstArrivingTime" ColumnName="_dstArrivingTime" />
+                <ScalarProperty Name="C_dstStartTime" ColumnName="_dstStartTime" />
+                <ScalarProperty Name="C_dstFinishTime" ColumnName="_dstFinishTime" />
+                <ScalarProperty Name="C_isChecked" ColumnName="_isChecked" />
+                <ScalarProperty Name="C_priority" ColumnName="_priority" />
+                <ScalarProperty Name="DOWNTEMP" ColumnName="DOWNTEMP" />
+                <ScalarProperty Name="EVENT_DATE" ColumnName="EVENT_DATE" />
+                <ScalarProperty Name="ORDER" ColumnName="ORDER" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="standby">
+            <EntityTypeMapping TypeName="MPlusModel.standby">
+              <MappingFragment StoreEntitySet="standby">
+                <ScalarProperty Name="idx" ColumnName="idx" />
+                <ScalarProperty Name="VEHICLEID" ColumnName="VEHICLEID" />
+                <ScalarProperty Name="GOALNAME" ColumnName="GOALNAME" />
+                <ScalarProperty Name="loc_x" ColumnName="loc_x" />
+                <ScalarProperty Name="loc_y" ColumnName="loc_y" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="unit">
+            <EntityTypeMapping TypeName="MPlusModel.unit">
+              <MappingFragment StoreEntitySet="unit">
+                <ScalarProperty Name="idx" ColumnName="idx" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="GOALNAME" ColumnName="GOALNAME" />
+                <ScalarProperty Name="goaltype" ColumnName="goaltype" />
+                <ScalarProperty Name="max_col" ColumnName="max_col" />
+                <ScalarProperty Name="max_row" ColumnName="max_row" />
+                <ScalarProperty Name="lds_dist" ColumnName="lds_dist" />
+                <ScalarProperty Name="rf_id" ColumnName="rf_id" />
+                <ScalarProperty Name="rf_ch" ColumnName="rf_ch" />
+                <ScalarProperty Name="loc_x" ColumnName="loc_x" />
+                <ScalarProperty Name="loc_y" ColumnName="loc_y" />
+                <ScalarProperty Name="direction" ColumnName="direction" />
+                <ScalarProperty Name="VEHICLEID" ColumnName="VEHICLEID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vehicle">
+            <EntityTypeMapping TypeName="MPlusModel.vehicle">
+              <MappingFragment StoreEntitySet="vehicle">
+                <ScalarProperty Name="idx" ColumnName="idx" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TRANSFERTYPE" ColumnName="TRANSFERTYPE" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="port" ColumnName="port" />
+                <ScalarProperty Name="remoteIP" ColumnName="remoteIP" />
+                <ScalarProperty Name="remotePort" ColumnName="remotePort" />
+                <ScalarProperty Name="installState" ColumnName="installState" />
+                <ScalarProperty Name="C_mode" ColumnName="_mode" />
+                <ScalarProperty Name="C_state" ColumnName="_state" />
+                <ScalarProperty Name="loc_x" ColumnName="loc_x" />
+                <ScalarProperty Name="loc_y" ColumnName="loc_y" />
+                <ScalarProperty Name="C_loc_th" ColumnName="_loc_th" />
+                <ScalarProperty Name="C_chargeRate" ColumnName="_chargeRate" />
+                <ScalarProperty Name="C_BATCHID" ColumnName="_BATCHID" />
+                <ScalarProperty Name="C_lastArrivedUnit" ColumnName="_lastArrivedUnit" />
+                <ScalarProperty Name="isAssigned" ColumnName="isAssigned" />
+                <ScalarProperty Name="isUse" ColumnName="isUse" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vehicle_part">
+            <EntityTypeMapping TypeName="MPlusModel.vehicle_part">
+              <MappingFragment StoreEntitySet="vehicle_part">
+                <ScalarProperty Name="idx" ColumnName="idx" />
+                <ScalarProperty Name="VEHICLEID" ColumnName="VEHICLEID" />
+                <ScalarProperty Name="portNo" ColumnName="portNo" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="slotNo" ColumnName="slotNo" />
+                <ScalarProperty Name="C_trayId" ColumnName="_trayId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="zone">
+            <EntityTypeMapping TypeName="MPlusModel.zone">
+              <MappingFragment StoreEntitySet="zone">
+                <ScalarProperty Name="idx" ColumnName="idx" />
+                <ScalarProperty Name="UNITID" ColumnName="UNITID" />
+                <ScalarProperty Name="VEHICLEID" ColumnName="VEHICLEID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mg_type">
+            <EntityTypeMapping TypeName="MPlusModel.mg_type">
+              <MappingFragment StoreEntitySet="mg_type">
+                <ScalarProperty Name="FS_MAX" ColumnName="FS_MAX" />
+                <ScalarProperty Name="MG_MAX" ColumnName="MG_MAX" />
+                <ScalarProperty Name="MG_NAME" ColumnName="MG_NAME" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="idx" ColumnName="idx" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="unit_fs">
+            <EntityTypeMapping TypeName="MPlusModel.unit_fs">
+              <MappingFragment StoreEntitySet="unit_fs">
+                <ScalarProperty Name="VEHICLEID" ColumnName="VEHICLEID" />
+                <ScalarProperty Name="direction" ColumnName="direction" />
+                <ScalarProperty Name="loc_y" ColumnName="loc_y" />
+                <ScalarProperty Name="loc_x" ColumnName="loc_x" />
+                <ScalarProperty Name="rf_ch" ColumnName="rf_ch" />
+                <ScalarProperty Name="rf_id" ColumnName="rf_id" />
+                <ScalarProperty Name="lds_dist" ColumnName="lds_dist" />
+                <ScalarProperty Name="max_row" ColumnName="max_row" />
+                <ScalarProperty Name="max_col" ColumnName="max_col" />
+                <ScalarProperty Name="mctype" ColumnName="mctype" />
+                <ScalarProperty Name="goaltype" ColumnName="goaltype" />
+                <ScalarProperty Name="GOALNAME" ColumnName="GOALNAME" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="idx" ColumnName="idx" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="없음" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

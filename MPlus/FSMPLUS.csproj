@@ -1,0 +1,386 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2A6C2CA4-C0F8-43A4-94B4-729D094BF531}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>FSMPlus</RootNamespace>
+    <AssemblyName>FSMPlus</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>7.1</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>\\10.135.230.103\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>mp_ts5_icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.10.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.10.8\lib\net452\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data.Entity.EF6, Version=6.10.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.Entity.6.10.8\lib\net452\MySql.Data.Entity.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="TIBCO.Rendezvous, Version=1.0.844.2, Culture=neutral, PublicKeyToken=1a696d1f90f6158a, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\TIBCO\TIBRV\bin\TIBCO.Rendezvous.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="alarm.cs">
+      <DependentUpon>LocalDbMySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="alarm_define.cs">
+      <DependentUpon>LocalDbMySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="alarm_history.cs">
+      <DependentUpon>LocalDbMySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="charge.cs">
+      <DependentUpon>LocalDbMySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Config\Configuration.cs" />
+    <Compile Include="controller.cs">
+      <DependentUpon>LocalDbMySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Control\CtrlVec.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\CtrlVec.Designer.cs">
+      <DependentUpon>CtrlVec.cs</DependentUpon>
+    </Compile>
+    <Compile Include="cost.cs">
+      <DependentUpon>LocalDbMySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="distance.cs">
+      <DependentUpon>LocalDbMySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormConfiguration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormConfiguration.Designer.cs">
+      <DependentUpon>FormConfiguration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormDetailInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormDetailInfo.Designer.cs">
+      <DependentUpon>FormDetailInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormLegendHint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormLegendHint.Designer.cs" />
+    <Compile Include="Forms\FormLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormLog.designer.cs">
+      <DependentUpon>FormLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormMain.Designer.cs">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormMessage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormMessage.designer.cs">
+      <DependentUpon>FormMessage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormMonitor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormMonitor.Designer.cs">
+      <DependentUpon>FormMonitor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormOperatorAction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormOperatorAction.Designer.cs">
+      <DependentUpon>FormOperatorAction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormSplash.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormSplash.Designer.cs">
+      <DependentUpon>FormSplash.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\GoalEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\GoalEditor.Designer.cs">
+      <DependentUpon>GoalEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PgeLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PgeLog.designer.cs">
+      <DependentUpon>PgeLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LocalDbMySql.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LocalDbMySql.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LocalDbMySql.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LocalDbMySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LocalDbMySql.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LocalDbMySql.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Logger.cs" />
+    <Compile Include="Logic\DbHandler.cs" />
+    <Compile Include="Global.cs" />
+    <Compile Include="Logic\DesignPattern.cs" />
+    <Compile Include="Logic\JobProccess.cs" />
+    <Compile Include="Logic\JobProccess.Method.cs" />
+    <Compile Include="Logic\MainHandler.cs" />
+    <Compile Include="Logic\MapDrawer.cs" />
+    <Compile Include="Logic\Proc_Atom.cs" />
+    <Compile Include="Logic\Proc_Atom.MessageCreate.cs" />
+    <Compile Include="Logic\RouteCost.cs" />
+    <Compile Include="Logic\RvListener.cs" />
+    <Compile Include="Logic\RvListener.Method.cs" />
+    <Compile Include="Logic\VehicleEventParser.cs" />
+    <Compile Include="Logic\VSP.cs" />
+    <Compile Include="mg_type.cs">
+      <DependentUpon>LocalDbMySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pepschedule.cs">
+      <DependentUpon>LocalDbMySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pepschedule_history.cs">
+      <DependentUpon>LocalDbMySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Ref\RefEnums.cs" />
+    <Compile Include="standby.cs">
+      <DependentUpon>LocalDbMySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="unit.cs">
+      <DependentUpon>LocalDbMySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="unit_fs.cs">
+      <DependentUpon>LocalDbMySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vehicle.cs">
+      <DependentUpon>LocalDbMySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Vehicles\AsyncClintSock.cs" />
+    <Compile Include="Vehicles\AsyncClintSock.RvTest.cs" />
+    <Compile Include="Vehicles\ChargeStandby.cs" />
+    <Compile Include="Vehicles\VehicleEntity.cs" />
+    <Compile Include="vehicle_part.cs">
+      <DependentUpon>LocalDbMySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="XmlFile\XmlFileHandler.cs" />
+    <Compile Include="zone.cs">
+      <DependentUpon>LocalDbMySql.tt</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Control\CtrlVec.resx">
+      <DependentUpon>CtrlVec.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormConfiguration.resx">
+      <DependentUpon>FormConfiguration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormDetailInfo.resx">
+      <DependentUpon>FormDetailInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormLegendHint.resx" />
+    <EmbeddedResource Include="Forms\FormLog.resx">
+      <DependentUpon>FormLog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormMain.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormMessage.resx">
+      <DependentUpon>FormMessage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormMonitor.resx">
+      <DependentUpon>FormMonitor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormOperatorAction.resx">
+      <DependentUpon>FormOperatorAction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormSplash.resx">
+      <DependentUpon>FormSplash.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\GoalEditor.resx">
+      <DependentUpon>GoalEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PgeLog.resx">
+      <DependentUpon>PgeLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EntityDeploy Include="LocalDbMySql.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>LocalDbMySql.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="LocalDbMySql.edmx.diagram">
+      <DependentUpon>LocalDbMySql.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DefDb.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LocalDbMySql.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>LocalDbMySql.edmx</DependentUpon>
+      <LastGenOutput>LocalDbMySql.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="LocalDbMySql.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>LocalDbMySql.edmx</DependentUpon>
+      <LastGenOutput>LocalDbMySql.cs</LastGenOutput>
+    </Content>
+    <Content Include="mp_ts5_icon.ico" />
+    <Content Include="수정사항.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1%28x86 및 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\tech-library\tech-library.csproj">
+      <Project>{7FAD43D8-2A60-414C-B208-B167832C8822}</Project>
+      <Name>tech-library</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

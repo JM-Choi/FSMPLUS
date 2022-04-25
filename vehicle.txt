@@ -1,0 +1,2 @@
+# idx, ID, IP, port, installState, _mode, _state, _loc_x, _loc_y, _loc_th, _chargeRate, _BATCHID, _lastArrivedUnit, _isMulti
+'2', 'VEHICLE01', '12.54.137.191', '7997', '1', '0', '0', NULL, NULL, NULL, NULL, NULL, '', NULL

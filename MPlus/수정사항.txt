@@ -1,0 +1,48 @@
+﻿<XmlFileHandler.cs> 추가
+
+<Configuration.cs>
+1. public class CfgData 선언에 한글 설명으로 수정
+2. 마지막 option 과 program 항목 추가
+3. 컴파일시 .Config 파일 없애는 불편 해소 위해 별도 파일로 저장
+
+<ChargeStandby.cs>
+1. Configuration 수정에 따른 수정
+
+<MainHandler.cs>
+1. JobProcessSetup()
+
+	액션: 가상의 JobProcess 생성 추가
+	이유: PreTempDown 을 수행하는데 vehicle 할당 이유 없다
+	주의:	ⓐ. OnSendPreTempDown 만 연결
+			ⓑ. 키는 "PROGRAM"
+
+2. ClosePorcess()
+
+	액션: JobProcess 소멸 처리
+	이유: 스레드 소멸에 대한 처리 누락되어 있었음
+	주의:	ⓐ. JobProcessSetup() 에서 가상 추가된 부분도 삭제처리
+		    ⓑ. JobProcess 의 run() 함수의 while(true) 부분을 while(IsStop) 으로 수정도 체크
+
+<VehicleEventParser.cs>
+1. TransferCompleteProcess 함수 정리
+	Vehicle 의 batchID는 어디서 Clear 하나???
+
+	JobProcess 의 Vehicle_OnRecvMsg 에서 Cmd4Vehicle.Status 가 VehicleStatus.NOT_ASSIGN 일 때 이곳 한곳에서 CLEAR 하나>>>>????
+
+	MultiJob 을 수행하는 동안 BatchID가 계속 바뀔테니 구분자로써 역할 의미가 없어지네??????
+
+2. TransferEndProcess 함수 정리
+	step_id 검색 부분 재검토 필요.
+	history 테이블 전체에서 검색하는거 내용이 많으면 문제 되는거 아닌가?
+
+<VSP.cs>
+1. property 수정
+2. schedule() 대대적 수정
+
+<DbHandler.cs>
+1.Select_ExecuteTime 수정
+	UpdateSchedule 부분 빼서 UpdateSchedule() 함수 생성
+	Peps에서 가장 오래된 ExecuteTime 시간만 취한다
+
+2.UpdateSchedule() 함수 추가
+	RealDb 에서 pepschedule 목록가져와 Peps와 비교해보고 신규건 Peps에 추가
